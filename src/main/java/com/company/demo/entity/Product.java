@@ -67,7 +67,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "getListNewProduct",
         resultSetMapping = "productInfoDto",
-        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images ->> \"$[0]\" as image \n" +
+        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images as image \n" +
                 "FROM product pro\n" +
                 "WHERE pro.is_available = true\n" +
                 "ORDER BY created_at desc\n" +
@@ -76,7 +76,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "getListBestSellerProduct",
         resultSetMapping = "productInfoDto",
-        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images ->> \"$[0]\" as image \n" +
+        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images as image \n" +
                 "FROM product pro\n" +
                 "WHERE pro.is_available = true\n" +
                 "ORDER BY total_sold desc\n" +
@@ -85,7 +85,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "getListSuggestProduct",
         resultSetMapping = "productInfoDto",
-        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images ->> \"$[0]\" as image \n" +
+        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images as image \n" +
                 "FROM product pro\n" +
                 "WHERE pro.is_available = true AND pro.id IN (?1)\n" +
                 "LIMIT ?2 \n"
@@ -93,7 +93,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "getRelatedProducts",
         resultSetMapping = "productInfoDto",
-        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images ->> \"$[0]\" as image \n" +
+        query = "SELECT pro.id, pro.name, pro.slug, pro.price, pro.total_sold, pro.product_images as image \n" +
                 "FROM product pro\n" +
                 "WHERE pro.is_available = true AND\n" +
                 "pro.id != ?1\n" +
@@ -105,7 +105,7 @@ import java.util.List;
         resultSetMapping = "productInfoDto",
         query = "SELECT DISTINCT d.*\n" +
                 "FROM (\n" +
-                "SELECT DISTINCT product.id, product.name, product.slug, product.price, product.total_sold, product.product_images ->> \"$[0]\" as image\n" +
+                "SELECT DISTINCT product.id, product.name, product.slug, product.price, product.total_sold, product.product_images as image\n" +
                 "FROM product \n" +
                 "INNER JOIN product_category \n" +
                 "ON product.id = product_category.product_id \n" +
@@ -120,7 +120,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "searchProductAllSize",
         resultSetMapping = "productInfoDto",
-        query = "SELECT DISTINCT product.id, product.name, product.slug, product.price, product.total_sold, product.product_images ->> \"$[0]\" as image\n" +
+        query = "SELECT DISTINCT product.id, product.name, product.slug, product.price, product.total_sold, product.product_images as image\n" +
                 "FROM product \n" +
                 "INNER JOIN product_category \n" +
                 "ON product.id = product_category.product_id \n" +
@@ -132,7 +132,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "searchProductByKeyword",
         resultSetMapping = "productInfoDto",
-        query = "SELECT DISTINCT product.id, product.name, product.slug, product.price, product.total_sold, product.product_images ->> \"$[0]\" as image\n" +
+        query = "SELECT DISTINCT product.id, product.name, product.slug, product.price, product.total_sold, product.product_images as image\n" +
                 "FROM product \n" +
                 "INNER JOIN product_category \n" +
                 "ON product.id = product_category.product_id \n" +

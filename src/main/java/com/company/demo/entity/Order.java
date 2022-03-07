@@ -47,7 +47,7 @@ import java.sql.Timestamp;
 @NamedNativeQuery(
         name = "getListOrderOfPersonByStatus",
         resultSetMapping = "orderInfoDto",
-        query = "SELECT orders.id, orders.total_price, orders.size size_vn, product.name product_name, product.product_images ->> \"$[0]\" as product_img\n" +
+        query = "SELECT orders.id, orders.total_price, orders.size size_vn, product.name product_name, product.product_images  as product_img\n" +
                 "FROM orders\n" +
                 "INNER JOIN product \n" +
                 "ON orders.product_id = product.id\n" +
@@ -58,7 +58,7 @@ import java.sql.Timestamp;
         resultSetMapping = "orderDetailDto",
         query = "SELECT orders.id, orders.total_price, orders.size size_vn, product.name product_name, orders.product_price,\n" +
                 "orders.receiver_name, orders.receiver_phone, orders.receiver_address, orders.status,\n" +
-                "product.product_images ->> \"$[0]\" as product_img\n" +
+                "product.product_images as product_img\n" +
                 "FROM orders\n" +
                 "INNER JOIN product \n" +
                 "ON orders.product_id = product.id\n" +
